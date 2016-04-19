@@ -5,8 +5,10 @@ namespace PhpFp\Maybe\Test;
 use PhpFp\Maybe\Maybe;
 use PhpFp\Maybe\Constructor\{Just, Nothing};
 
-class ApTest extends \PHPUnit_Framework_TestCase {
-    public function testApParameterCount() {
+class ApTest extends \PHPUnit_Framework_TestCase
+{
+    public function testApParameterCount()
+    {
         $count = (new \ReflectionMethod('PhpFp\Maybe\Constructor\Just::ap'))
             ->getNumberOfParameters();
 
@@ -17,9 +19,12 @@ class ApTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testAp() {
-        $add = function ($x) {
-            return function ($y) use ($x) {
+    public function testAp()
+    {
+        $add = function ($x)
+        {
+            return function ($y) use ($x)
+            {
                 return $x + $y;
             };
         };

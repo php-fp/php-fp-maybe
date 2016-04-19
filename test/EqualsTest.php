@@ -5,18 +5,23 @@ namespace PhpFp\Maybe\Test;
 use PhpFp\Maybe\Maybe;
 use PhpFp\Maybe\Constructor\{Just, Nothing};
 
-class Value {
-    public function __construct($x) {
+class Value
+{
+    public function __construct($x)
+    {
         $this->value = $x;
     }
 
-    public function equals($that) {
+    public function equals($that)
+    {
         return $this->value === $that->value;
     }
 }
 
-class EqualsTest extends \PHPUnit_Framework_TestCase {
-    public function testEqualsParameterCount() {
+class EqualsTest extends \PHPUnit_Framework_TestCase
+{
+    public function testEqualsParameterCount()
+    {
         $count = (new \ReflectionMethod('PhpFp\Maybe\Constructor\Just::equals'))
             ->getNumberOfParameters();
 
@@ -27,7 +32,8 @@ class EqualsTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testEquals() {
+    public function testEquals()
+    {
         $a = Maybe::empty();
         $b = Maybe::of(new Value(2));
         $c = Maybe::of(new Value(3));

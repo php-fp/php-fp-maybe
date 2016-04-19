@@ -5,8 +5,10 @@ namespace PhpFp\Maybe\Test;
 use PhpFp\Maybe\Maybe;
 use PhpFp\Maybe\Constructor\{Just, Nothing};
 
-class ConstructTest extends \PHPUnit_Framework_TestCase {
-    public function testJustParameterCount() {
+class ConstructTest extends \PHPUnit_Framework_TestCase
+{
+    public function testJustParameterCount()
+    {
         $count = (new \ReflectionClass('PhpFp\Maybe\Constructor\Just'))
             ->getConstructor()->getNumberOfParameters();
 
@@ -17,7 +19,8 @@ class ConstructTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testConstruct() {
+    public function testConstruct()
+    {
         $this->assertEquals(
             (new Just(2))->fork(null),
             2,

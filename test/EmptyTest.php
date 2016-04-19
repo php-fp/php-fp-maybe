@@ -4,8 +4,10 @@ namespace PhpFp\Maybe\Test;
 
 use PhpFp\Maybe\Maybe;
 
-class EmptyTest extends \PHPUnit_Framework_TestCase {
-    public function testEmptyParameterCount() {
+class EmptyTest extends \PHPUnit_Framework_TestCase
+{
+    public function testEmptyParameterCount()
+    {
         $count = (new \ReflectionMethod('PhpFp\Maybe\Maybe::empty'))
             ->getNumberOfParameters();
 
@@ -16,7 +18,8 @@ class EmptyTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testEmpty() {
+    public function testEmpty()
+    {
         $this->assertInstanceOf(
             'PhpFp\Maybe\Constructor\Nothing',
             Maybe::empty(),

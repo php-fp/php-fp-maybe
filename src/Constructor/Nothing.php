@@ -7,13 +7,15 @@ use PhpFp\Maybe\Maybe;
 /**
  * An OO-looking implementation of the Nothing constructor in PHP.
  */
-class Nothing extends Maybe {
+class Nothing extends Maybe
+{
     /**
      * Application. Nothing acts as identity.
      * @param Maybe $that The wrapped parameter.
      * @return Maybe The parameter.
      */
-    public function ap(Maybe $that) : Maybe {
+    public function ap(Maybe $that) : Maybe
+    {
         return $that;
     }
 
@@ -22,7 +24,8 @@ class Nothing extends Maybe {
      * @param Maybe $that The Maybe to concatenate.
      * @return Maybe The $that value, regardless.
      */
-    public function concat(Maybe $that) : Maybe {
+    public function concat(Maybe $that) : Maybe
+    {
         return $that;
     }
 
@@ -31,7 +34,8 @@ class Nothing extends Maybe {
      * @param callable $f a -> Maybe b
      * @return Maybe $this (Nothing).
      */
-    public function chain(callable $_) : Maybe {
+    public function chain(callable $_) : Maybe
+    {
         return $this;
     }
 
@@ -40,7 +44,8 @@ class Nothing extends Maybe {
      * @param Maybe $that Inferred inner types should match!
      * @return bool
      */
-    public function equals(Maybe $that) : bool {
+    public function equals(Maybe $that) : bool
+    {
         return $that instanceof Nothing;
     }
 
@@ -49,7 +54,8 @@ class Nothing extends Maybe {
      * @param mixed $default Returned for Nothing.
      * @return mixed For Nothing, this is $default.
      */
-    public function fork($default) {
+    public function fork($default)
+    {
         return $default;
     }
 
@@ -58,7 +64,8 @@ class Nothing extends Maybe {
      * @param callable $f The mapping function.
      * @return Maybe The outer structure is preserved.
      */
-    public function map(callable $_) : Maybe {
+    public function map(callable $_) : Maybe
+    {
         return $this;
     }
 
@@ -68,7 +75,8 @@ class Nothing extends Maybe {
      * @param mixed $x The accumulator value.
      * @return mixed The $x type and $f return type.
      */
-    public function reduce(callable $_, $x) {
+    public function reduce(callable $_, $x)
+    {
         return $x;
     }
 }

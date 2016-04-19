@@ -5,8 +5,10 @@ namespace PhpFp\Maybe\Test;
 use PhpFp\Maybe\Maybe;
 use PhpFp\Maybe\Constructor\{Just, Nothing};
 
-class ForkTest extends \PHPUnit_Framework_TestCase {
-    public function testForkParameterCount() {
+class ForkTest extends \PHPUnit_Framework_TestCase
+{
+    public function testForkParameterCount()
+    {
         $count = (new \ReflectionMethod('PhpFp\Maybe\Constructor\Just::fork'))
             ->getNumberOfParameters();
 
@@ -17,7 +19,8 @@ class ForkTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testFork() {
+    public function testFork()
+    {
         $this->assertEquals(
             Maybe::of(2)
                 ->fork(4),

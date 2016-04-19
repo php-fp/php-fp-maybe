@@ -5,8 +5,10 @@ namespace PhpFp\Maybe\Test;
 use PhpFp\Maybe\Maybe;
 use PhpFp\Maybe\Constructor\{Just, Nothing};
 
-class MapTest extends \PHPUnit_Framework_TestCase {
-    public function testMapParameterCount() {
+class MapTest extends \PHPUnit_Framework_TestCase
+{
+    public function testMapParameterCount()
+    {
         $count = (new \ReflectionMethod('PhpFp\Maybe\Constructor\Just::map'))
             ->getNumberOfParameters();
 
@@ -17,8 +19,10 @@ class MapTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testMap() {
-        $add2 = function ($x) {
+    public function testMap()
+    {
+        $add2 = function ($x)
+        {
             return $x + 2;
         };
 

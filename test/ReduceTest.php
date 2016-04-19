@@ -5,8 +5,10 @@ namespace PhpFp\Maybe\Test;
 use PhpFp\Maybe\Maybe;
 use PhpFp\Maybe\Constructor\{Just, Nothing};
 
-class ReduceTest extends \PHPUnit_Framework_TestCase {
-    public function testReduceParameterCount() {
+class ReduceTest extends \PHPUnit_Framework_TestCase
+{
+    public function testReduceParameterCount()
+    {
         $count = (new \ReflectionMethod('PhpFp\Maybe\Constructor\Just::reduce'))
             ->getNumberOfParameters();
 
@@ -17,11 +19,11 @@ class ReduceTest extends \PHPUnit_Framework_TestCase {
         );
     }
 
-    public function testReduce() {
-        $append = function ($xs) {
-            return function ($x) use ($xs) {
-                return array_merge($xs, [$x]);
-            };
+    public function testReduce()
+    {
+        $append = function ($xs, $x)
+        {
+            return array_merge($xs, [$x]);
         };
 
         $this->assertEquals(

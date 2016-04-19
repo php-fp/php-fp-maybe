@@ -7,7 +7,12 @@ use PhpFp\Maybe\Maybe;
 /**
  * An OO-looking implementation of the Just constructor in PHP.
  */
-class Just extends Maybe {
+class Just extends Maybe
+{
+    /**
+     * The inner value for this Maybe.
+     * @var mixed
+     */
     private $value = null;
 
     /**
@@ -15,7 +20,8 @@ class Just extends Maybe {
      * Don't construct this with a null!
      * @param mixed $x The value to wrap.
      */
-    public function __construct($value) {
+    public function __construct($value)
+    {
         $this->value = $value;
     }
 
@@ -24,10 +30,14 @@ class Just extends Maybe {
      * @param Maybe $that The wrapped parameter.
      * @return Maybe The wrapped result.
      */
-    public function ap(Maybe $that) : Maybe {
-        return $this->chain(function ($f) use ($that) {
-            return $that->map($f);
-        });
+    public function ap(Maybe $that) : Maybe
+    {
+        return $this->chain(
+            function ($f) use ($that)
+            {
+                return $that->map($f);
+            }
+        );
     }
 
     /**
@@ -36,8 +46,10 @@ class Just extends Maybe {
      * @return Maybe The concatenated value.
      * @todo Make friendly with primitives.
      */
-    public function concat(Maybe $that) : Maybe {
-        if ($that instanceof Nothing) {
+    public function concat(Maybe $that) : Maybe
+    {
+        if ($that instanceof Nothing)
+        {
             return $this;
         }
 
@@ -53,7 +65,8 @@ class Just extends Maybe {
      * @param callable $f a -> Maybe b
      * @return Maybe The result of the function.
      */
-    public function chain(callable $f) : Maybe {
+    public function chain(callable $f) : Maybe
+    {
         return $f($this->value);
     }
 
@@ -63,7 +76,8 @@ class Just extends Maybe {
      * @return bool
      * @todo Make this compatible with setoid inner values.
      */
-    public function equals(Maybe $that) : bool {
+    public function equals(Maybe $that) : bool
+    {
         return $that instanceof Just
             && $this->value->equals($that->fork(null));
     }
@@ -73,7 +87,8 @@ class Just extends Maybe {
      * @param mixed $default In case of Nothing.
      * @return mixed Whatever the Maybe's inner type is.
      */
-    public function fork($_) {
+    public function fork($_)
+    {
         return $this->value;
     }
 
@@ -82,10 +97,14 @@ class Just extends Maybe {
      * @param callable $f The mapping function.
      * @return Maybe The outer structure is preserved.
      */
-    public function map(callable $f) : Maybe {
-        return $this->chain(function ($a) use ($f) {
-            return Maybe::of($f($a));
-        });
+    public function map(callable $f) : Maybe
+    {
+        return $this->chain(
+            function ($a) use ($f)
+            {
+                return Maybe::of($f($a));
+            }
+        );
     }
 
     /**
@@ -94,7 +113,8 @@ class Just extends Maybe {
      * @param mixed $x The accumulator value.
      * @return mixed The $x type and $f return type.
      */
-    public function reduce(callable $f, $x) {
-        return $f($x)($this->value);
+    public function reduce(callable $f, $x)
+    {
+        return $f($x, $this->value);
     }
 }
