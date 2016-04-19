@@ -14,7 +14,7 @@
     "homepage": "http://www.github.com/php-fp/php-fp-maybe",
     "keywords": ["functional", "monad", "maybe"],
     "license": "MIT",
-    "name": "php-fp/php-fp-maybe    ",
+    "name": "php-fp/php-fp-maybe",
     "scripts": {
         "test": "vendor/bin/phpunit test"
     },
