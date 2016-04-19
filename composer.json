@@ -1,0 +1,26 @@
+{
+    "authors": [
+        {
+            "name": "Tom",
+            "email": "tomjharding@live.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PhpFp\\Maybe\\": "src/"
+        }
+    },
+    "description": "An implementation of the Maybe monad in PHP.",
+    "homepage": "http://www.github.com/php-fp/php-fp-maybe",
+    "keywords": ["functional", "monad", "maybe"],
+    "license": "MIT",
+    "name": "php-fp/php-fp-maybe    ",
+    "scripts": {
+        "test": "vendor/bin/phpunit test"
+    },
+    "time": "2016-04-19",
+    "versions": "1.0.0",
+    "require-dev": {
+        "phpunit/phpunit": "^5.3"
+    }
+}
