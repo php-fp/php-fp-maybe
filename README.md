@@ -62,7 +62,7 @@ The merit of should be obvious: the first example I normally give is with a func
 
 ### API
 
-In the following type signatures, constructors and static functions are written as one would see in pure languages such as Haskell. The others contain a pipe, where the type before the pipe represents the type of the current IO instance, and the type after the pipe represents the function.
+In the following type signatures, constructors and static functions are written as one would see in pure languages such as Haskell. The others contain a pipe, where the type before the pipe represents the type of the current Maybe instance, and the type after the pipe represents the function.
 
 ### `of :: a -> Maybe a`
 
