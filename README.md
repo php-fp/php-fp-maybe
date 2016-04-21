@@ -7,7 +7,8 @@ The Maybe monad is one of the first monads that you're likely to encounter when 
 ```php
 <?php
 
-function prop($key, $xs) {
+function prop($key, $xs)
+{
     return $xs[$key];
 }
 
@@ -27,8 +28,10 @@ In this code, we can see that our `prop` method extracts a given key from an arr
 
 import PhpFp\Maybe\Maybe;
 
-function prop($key) {
-    return function ($xs) {
+function prop($key)
+{
+    return function ($xs)
+    {
         return new Maybe(
             isset($xs[$key])
                 ? $xs[$key]
@@ -116,8 +119,10 @@ Apply a Maybe-wrapped argument to a Maybe-wrapped function. Nothing values act a
 
 use PhpFp\Maybe\Maybe;
 
-$add = function ($x) {
-    return function ($y) {
+$add = function ($x)
+{
+    return function ($y)
+    {
         return $x + $y;
     };
 };
@@ -146,7 +151,8 @@ $maybes = [Maybe::empty(), Maybe::of(2), Maybe::empty()];
 
 $acc = array_reduce(
     $maybes,
-    function ($acc, $x) {
+    function ($acc, $x)
+    {
         return $acc->concat($x);
     },
     Maybe::empty()
@@ -164,7 +170,8 @@ This is the equivalent of Haskell's >>= (bind) operation for this Maybe implemen
 
 use PhpFp\Maybe\Maybe;
 
-function safeHalf($x) {
+function safeHalf($x)
+{
     return $x % 2 == 0
         ? Maybe::of($x / 2)
         : Maybe::empty();
@@ -183,11 +190,13 @@ Setoid equality for Maybe. First, the two constructors are checked for equality.
 use PhpFp\Maybe\Maybe;
 
 class Value {
-    public function __construct($x) {
+    public function __construct($x)
+    {
         $this->value = $x;
     }
 
-    public function equals($that) {
+    public function equals($that)
+    {
         return $this->value === $that->value;
     }
 }
@@ -212,7 +221,8 @@ Standard functor map: transform the value within a Maybe, and return an updated 
 
 use PhpFp\Maybe\Maybe;
 
-$add2 = function ($x) {
+$add2 = function ($x)
+{
     return $x + 2;
 };
 
@@ -229,8 +239,10 @@ Maybe is a foldable type. For Nothing values, `reduce` returns whatever initial 
 
 use PhpFp\Maybe\Maybe;
 
-$append = function ($xs) {
-    return function ($x) use ($xs) {
+$append = function ($xs)
+{
+    return function ($x) use ($xs)
+    {
         return array_merge($xs, [$x]);
     };
 };

@@ -10,6 +10,11 @@
             "PhpFp\\Maybe\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpFp\\Maybe\\Test\\": "test/"
+        }
+    },
     "description": "An implementation of the Maybe monad in PHP.",
     "homepage": "http://www.github.com/php-fp/php-fp-maybe",
     "keywords": ["functional", "monad", "maybe"],
