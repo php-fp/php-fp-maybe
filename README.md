@@ -26,7 +26,7 @@ In this code, we can see that our `prop` method extracts a given key from an arr
 ```php
 <?php
 
-import PhpFp\Maybe\Maybe;
+use PhpFp\Maybe\Maybe;
 
 function prop($key)
 {
@@ -99,7 +99,7 @@ assert($value == 'blah');
 
 Construct a new value, either Just or Nothing. `Just` requires one parameter, and Nothing requires no parameters (because the parameter would always be `null`):
 
-```
+```php
 <?php
 
 use PhpFp\Maybe\Maybe;
@@ -114,7 +114,7 @@ The `fork` parameters are explained later on in this API description.
 
 Apply a Maybe-wrapped argument to a Maybe-wrapped function. Nothing values act as the identity function, as shown below:
 
-```
+```php
 <?php
 
 use PhpFp\Maybe\Maybe;
@@ -163,7 +163,7 @@ assert($acc->fork(5) == 2);
 
 ### `chain :: Maybe a | (a -> Maybe b) -> Maybe b`
 
-This is the equivalent of Haskell's >>= (bind) operation for this Maybe implementation. This runs a Maybe-returning function on the inner value of this Maybe, and returns the result. This is the important mechanism behind the example in the introduction.
+This is the equivalent of Haskell's `>>=` (bind) operation for this Maybe implementation. This runs a Maybe-returning function on the inner value of this Maybe, and returns the result. This is the important mechanism behind the example in the introduction.
 
 ```php
 <?php
@@ -234,7 +234,7 @@ assert(Maybe::of(2)->map($add2)->fork(-1) == 4);
 
 Maybe is a foldable type. For Nothing values, `reduce` returns whatever initial accumulator value was supplied. For `Just` types, the result is the reduction function evaluated with the accumulator and the wrapped value.
 
-```
+```php
 <?php
 
 use PhpFp\Maybe\Maybe;
