@@ -32,10 +32,9 @@ function prop($key)
 {
     return function ($xs)
     {
-        return new Maybe(
-            isset($xs[$key])
-                ? $xs[$key]
-                : null
+        return isset($xs[$key])
+            ? Maybe::of($xs[$key])
+            : Maybe::nothing();
         );
     };
 }
@@ -95,20 +94,13 @@ $value = Maybe::empty()
 assert($value == 'blah');
 ```
 
-### `__construct :: a -> Maybe a`
+### `just :: a -> Just a`
 
-Construct a new value, either Just or Nothing. `Just` requires one parameter, and Nothing requires no parameters (because the parameter would always be `null`):
+Standard constructor for `Just` instances. Typically you should call `Maybe::of` instead.
 
-```php
-<?php
+### `nothing :: a -> Nothing a`
 
-use PhpFp\Maybe\Maybe;
-
-assert(Maybe::of(12))->fork(5) == 12);
-assert(Maybe::empty())->fork(5) == 5);
-```
-
-The `fork` parameters are explained later on in this API description.
+Standard constructor for `Nothing` instances. Typically you should call `Maybe::nothing` instead.
 
 ### `ap :: Maybe (a -> b) | Maybe a -> Maybe b`
 

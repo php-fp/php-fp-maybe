@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace PhpFp\Maybe\Constructor;
 
@@ -7,24 +8,8 @@ use PhpFp\Maybe\Maybe;
 /**
  * An OO-looking implementation of the Just constructor in PHP.
  */
-class Just extends Maybe
+final class Just extends Maybe
 {
-    /**
-     * The inner value for this Maybe.
-     * @var mixed
-     */
-    private $value = null;
-
-    /**
-     * Create a new Just instance.
-     * Don't construct this with a null!
-     * @param mixed $x The value to wrap.
-     */
-    public function __construct($value)
-    {
-        $this->value = $value;
-    }
-
     /**
      * Application, derived with chain.
      * @param Maybe $that The wrapped parameter.
@@ -116,5 +101,21 @@ class Just extends Maybe
     public function reduce(callable $f, $x)
     {
         return $f($x, $this->value);
+    }
+
+    /**
+     * The inner value for this Maybe.
+     * @var mixed
+     */
+    private $value = null;
+
+    /**
+     * Create a Maybe::just instance.
+     * Don't construct this with a null!
+     * @param mixed $x The value to wrap.
+     */
+    protected function __construct($value)
+    {
+        $this->value = $value;
     }
 }

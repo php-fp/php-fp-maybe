@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace PhpFp\Maybe\Constructor;
 
@@ -7,7 +8,7 @@ use PhpFp\Maybe\Maybe;
 /**
  * An OO-looking implementation of the Nothing constructor in PHP.
  */
-class Nothing extends Maybe
+final class Nothing extends Maybe
 {
     /**
      * Application. Nothing acts as identity.

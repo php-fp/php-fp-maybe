@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace PhpFp\Maybe;
 
@@ -10,22 +11,41 @@ use PhpFp\Maybe\Constructor\{Just, Nothing};
 abstract class Maybe
 {
     /**
-     * Empty value for the monoid definition.
-     * @return Maybe The Nothing value.
+     * Construct a new Just instance with a value.
+     * @param mixed $x The value to be wrapped.
+     * @return A new Just-constructed value.
      */
-    public static function empty() : Nothing
+    final public static function just($x) : Just
     {
-        return new Nothing;
+        return new Just($x);
+    }
+
+    /**
+     * Construct a new Nothing instance.
+     * @return A new Nothing-constructed value.
+     */
+    final public static function nothing() : Nothing
+    {
+        return new Nothing();
+    }
+
+    /**
+     * Empty value for the monoid definition.
+     * @return A new Nothing-constructed value.
+     */
+    final public static function empty() : Maybe
+    {
+        return self::nothing();
     }
 
     /**
      * Applicative constructor for Maybe.
      * @param mixed $x The value to be wrapped.
-     * @return A new Just-constructed type.
+     * @return A new Just-constructed value.
      */
-    public static function of($x) : Just
+    final public static function of($x) : Maybe
     {
-        return new Just($x);
+        return self::just($x);
     }
 
     /**
