@@ -53,7 +53,7 @@ class Just extends Maybe
             return $this;
         }
 
-        return new Maybe(
+        return Maybe::of(
             $this->value->concat(
                 $that->fork(null)
             )
