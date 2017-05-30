@@ -30,6 +30,21 @@ abstract class Maybe
     }
 
     /**
+     * Similar to `of` or `just`, save the fact that
+     * `null` values are mapped to `Nothing` instead.
+     * Useful for converting nullable functions to
+     * safer Maybe-returning functions.
+     * @param mixed $x The value to be wrapped.
+     * @return A new Maybe-wrapped value.
+     */
+    final public static function fromNullable($x) : Maybe
+    {
+        return isset($x)
+          ? Maybe::just($x)
+          : Maybe::nothing();
+    }
+
+    /**
      * Empty value for the monoid definition.
      * @return A new Nothing-constructed value.
      */
