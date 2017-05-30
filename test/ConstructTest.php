@@ -22,13 +22,13 @@ class ConstructTest extends \PHPUnit_Framework_TestCase
     public function testConstruct()
     {
         $this->assertEquals(
-            (new Just(2))->fork(null),
+            (Maybe::just(2))->fork(null),
             2,
             'Constructs a Just.'
         );
 
         $this->assertEquals(
-            (new Nothing)->fork(-1),
+            Maybe::nothing()->fork(-1),
             -1,
             'Constructs a Nothing.'
         );
